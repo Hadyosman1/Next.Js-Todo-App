@@ -14,7 +14,13 @@ import { GoPasskeyFill } from "react-icons/go";
 import { TbHandStop } from "react-icons/tb";
 import { VscLoading } from "react-icons/vsc";
 
-const EditAccountBtn = ({ user }: { user: User }) => {
+const EditAccountBtn = ({
+  user,
+  token,
+}: {
+  user: User;
+  token: string | undefined;
+}) => {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -49,7 +55,7 @@ const EditAccountBtn = ({ user }: { user: User }) => {
 
       setIsPasswordFieldsShown(false);
     }
-  }, [isModalOpen]);
+  }, [isModalOpen, user.email, user.name]);
 
   const handleChange = (e: ChangeEvent) => {
     const element = e.target as HTMLInputElement;
@@ -77,7 +83,7 @@ const EditAccountBtn = ({ user }: { user: User }) => {
     }
 
     setIsLoading(true);
-    const res = await editAccount(formData);
+    const res = await editAccount(formData, user.id, token);
     setIsLoading(false);
 
     if (!res.ok) return toast.error(res.error);
@@ -107,8 +113,10 @@ const EditAccountBtn = ({ user }: { user: User }) => {
             tabIndex={-1}
             aria-hidden={!isModalOpen}
             className={`${
-              !isModalOpen ? "opacity-0 invisible" : "opacity-100 visible"
-            } overflow-y-auto overflow-x-hidden fixed bg-black/30 backdrop-blur-sm flex  z-50 justify-center items-center w-full inset-0  max-h-full`}
+              !isModalOpen
+                ? "opacity-0 invisible translate-x-full"
+                : "opacity-100 visible"
+            } overflow-y-auto transition-all duration-300 overflow-x-hidden fixed bg-black/30 backdrop-blur-sm flex  z-50 justify-center items-center w-full inset-0  max-h-full`}
           >
             <div className="relative p-4 w-full max-w-md max-h-full">
               <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">

@@ -107,13 +107,29 @@ export async function login(data: TLoginProps): Promise<TAuthReturn> {
   }
 }
 
-export async function editAccount(data: TUpdateAccount): Promise<TAuthReturn> {
+export async function editAccount(
+  data: TUpdateAccount,
+  id: number,
+  token: string | undefined
+): Promise<TAuthReturn> {
   try {
-    const user = await prisma.user.findUnique({ where: { email: data.email } });
+    const user = await prisma.user.findUnique({ where: { id } });
     if (!user) {
       return {
         ok: false,
         error: "User not found",
+      };
+    }
+
+    const userFromToken = jwt.verify(
+      token ?? "",
+      process.env.SECRET_KEY as string
+    ) as User | null;
+
+    if (userFromToken?.id !== id) {
+      return {
+        ok: false,
+        error: "You are not authorized to edit this account",
       };
     }
 
@@ -135,8 +151,20 @@ export async function editAccount(data: TUpdateAccount): Promise<TAuthReturn> {
       data.newPassword = newPassword;
     }
 
+    if (data.email !== user.email) {
+      const userExists = await prisma.user.findUnique({
+        where: { email: data.email },
+      });
+
+      if (userExists) {
+        return {
+          ok: false,
+          error: "User with this email already exists",
+        };
+      }
+    }
     const updatedUser = await prisma.user.update({
-      where: { email: data.email },
+      where: { id },
       data: {
         name: data.name,
         email: data.email,
@@ -144,16 +172,17 @@ export async function editAccount(data: TUpdateAccount): Promise<TAuthReturn> {
       },
     });
 
-    const token = jwt.sign(updatedUser, process.env.SECRET_KEY as string, {
+    const newToken = jwt.sign(updatedUser, process.env.SECRET_KEY as string, {
       expiresIn: "30d",
     });
 
     return {
       ok: true,
       message: "Account updated successfully",
-      token,
+      token: newToken,
     };
   } catch (error) {
+    console.error(error);
     return {
       ok: false,
       error:

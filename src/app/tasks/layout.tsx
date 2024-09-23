@@ -1,8 +1,8 @@
 import verifyTokenForPage from "@/utils/verifyTokenForPage";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
+import Header from "../../components/layout/Header";
+import Footer from "../../components/layout/Footer";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   const token = cookies().get("token")?.value;

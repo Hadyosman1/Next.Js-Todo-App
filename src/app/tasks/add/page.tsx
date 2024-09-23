@@ -1,5 +1,5 @@
-import AddTaskForm from "@/app/components/forms/AddTaskForm";
-import BackToTasksBtn from "@/app/components/shared/BackToTasksBtn";
+import AddTaskForm from "@/components/forms/AddTaskForm";
+import BackToTasksBtn from "@/components/shared/BackToTasksBtn";
 import verifyTokenForPage from "@/utils/verifyTokenForPage";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";

@@ -1,6 +1,6 @@
 "use client";
 
-import BackToTasksBtn from "./components/shared/BackToTasksBtn";
+import BackToTasksBtn from "../components/shared/BackToTasksBtn";
 
 const Error = ({
   error,

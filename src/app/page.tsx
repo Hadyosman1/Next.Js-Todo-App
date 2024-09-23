@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import RegisterForm from "./components/forms/RegisterForm";
+import RegisterForm from "../components/forms/RegisterForm";
 import { redirect } from "next/navigation";
 
 const RegisterPage = () => {

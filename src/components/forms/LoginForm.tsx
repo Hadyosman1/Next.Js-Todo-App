@@ -80,7 +80,7 @@ const LoginForm = () => {
       </button>
 
       <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-        i don't have an account...!
+        {`i don't have an account...!`}
         <Link
           href="/"
           className="font-medium text-sky-600 hover:underline dark:text-sky-500"

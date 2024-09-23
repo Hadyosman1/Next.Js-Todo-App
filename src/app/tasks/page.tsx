@@ -4,7 +4,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import verifyTokenForPage from "@/utils/verifyTokenForPage";
 import { redirect } from "next/navigation";
-import TasksTable from "../components/task/TasksTable";
+import TasksTable from "../../components/task/TasksTable";
 
 import { LuPlusCircle } from "react-icons/lu";
 

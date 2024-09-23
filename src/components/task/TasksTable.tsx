@@ -72,7 +72,7 @@ const TasksTable = ({ tasks }: { tasks: Task[] }) => {
           <tfoot>
             <tr className="border-b bg-gray-800 border-gray-700 text-center">
               <td className="px-6 py-4 text-lg" colSpan={10}>
-                There is no tasks yet...
+                There is no tasks yet, go to add tasks now...
               </td>
             </tr>
           </tfoot>

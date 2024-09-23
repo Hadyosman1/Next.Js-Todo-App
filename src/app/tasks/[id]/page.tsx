@@ -1,7 +1,7 @@
-import BackToTasksBtn from "@/app/components/shared/BackToTasksBtn";
-import DeleteBtn from "@/app/components/shared/DeleteBtn";
-import EditTaskBtn from "@/app/components/task/EditTaskBtn";
-import TaskStatus from "@/app/components/task/TaskStatus";
+import BackToTasksBtn from "@/components/shared/BackToTasksBtn";
+import DeleteBtn from "@/components/shared/DeleteBtn";
+import EditTaskBtn from "@/components/task/EditTaskBtn";
+import TaskStatus from "@/components/task/TaskStatus";
 import prisma from "@/utils/db";
 import verifyTokenForPage from "@/utils/verifyTokenForPage";
 import { Task } from "@prisma/client";

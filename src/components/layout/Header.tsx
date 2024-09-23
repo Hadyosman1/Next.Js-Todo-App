@@ -90,7 +90,7 @@ const Header = ({ user, token }: { user: User; token: string | undefined }) => {
               </li>
 
               <li>
-                <EditAccountBtn user={user} />
+                <EditAccountBtn token={token} user={user} />
               </li>
 
               <li>
