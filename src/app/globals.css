@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #181f2b;
+    --foreground: #eee;
+  }
+
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)] min-h-svh;
+  }
+
+  input,
+  textarea,
+  button,
+  a {
+    @apply outline-none py-1 px-2 rounded font-semibold focus:ring-sky-500 focus:ring-4;
+  }
+
+  button:disabled {
+    @apply opacity-60 cursor-wait;
+  }
+
+  input,
+  textarea {
+    @apply text-slate-700 placeholder:italic;
+  }
+
+  button {
+    @apply text-white;
+  }
+}
+
+@layer components {
+}
+
+@layer utilities {
+  .container {
+    @apply xl:max-w-[1260px] px-3 md:px-6;
+  }
+}
