@@ -37,7 +37,7 @@ const HomePage = async () => {
 
       <div className="flex flex-col gap-3">
         <h2 className="text-2xl font-semibold py-4">Tasks List</h2>
-
+        
         <TasksTable tasks={tasks} />
       </div>
     </section>

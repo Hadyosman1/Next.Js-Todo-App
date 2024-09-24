@@ -2,6 +2,7 @@ import { Task } from "@prisma/client";
 import Link from "next/link";
 import TaskStatus from "./TaskStatus";
 import { BiDetail } from "react-icons/bi";
+import dateFormat from "@/utils/dateFormat";
 
 const TasksTable = ({ tasks }: { tasks: Task[] }) => {
   return (
@@ -49,7 +50,7 @@ const TasksTable = ({ tasks }: { tasks: Task[] }) => {
               </td>
 
               <td className="px-6 py-4 whitespace-nowrap">
-                <p>{new Date(task.createdAt).toUTCString()}</p>
+                <p>{dateFormat(new Date(task.createdAt))}</p>
               </td>
 
               <td className="px-6 py-4">

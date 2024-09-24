@@ -9,6 +9,7 @@ import EditAccountBtn from "../user/EditAccountBtn";
 
 import { IoHappyOutline } from "react-icons/io5";
 import { GoSignOut } from "react-icons/go";
+import dateFormat from "@/utils/dateFormat";
 
 const Header = ({ user, token }: { user: User; token: string | undefined }) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -96,10 +97,20 @@ const Header = ({ user, token }: { user: User; token: string | undefined }) => {
               <li>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-2 w-full px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   <GoSignOut /> Sign out
                 </button>
+              </li>
+
+              <li className="border-t px-3 py-1">
+                <small className=" text-center ">
+                  Joined at{" "}
+                  {dateFormat(new Date(user.createdAt))
+                    .split(" ")
+                    .slice(0, 4)
+                    .join(" ")}
+                </small>
               </li>
             </ul>
           </div>
