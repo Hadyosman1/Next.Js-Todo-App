@@ -65,6 +65,10 @@ const TasksTable = ({ tasks }: { tasks: Task[] }) => {
 
   return (
     <>
+      <h2 className="text-2xl font-semibold py-3">
+        Tasks List <small> ( {filteredTasks.length} )</small>
+      </h2>
+
       <div className="py-2 gap-4 flex items-center flex-wrap">
         <TasksSearchInput
           searchText={searchText}
