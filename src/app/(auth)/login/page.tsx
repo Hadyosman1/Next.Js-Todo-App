@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import LoginForm from "@/components/forms/LoginForm";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
@@ -5,9 +7,7 @@ import { cookies } from "next/headers";
 const LoginPage = () => {
   const token = cookies().get("token")?.value;
 
-  if (token) {
-    return redirect("/tasks");
-  }
+  if (token) redirect("/tasks");
 
   return (
     <section className="container mx-auto">
@@ -31,3 +31,8 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+export const metadata: Metadata = {
+  title: "Login",
+  description: "Login to your account",
+};

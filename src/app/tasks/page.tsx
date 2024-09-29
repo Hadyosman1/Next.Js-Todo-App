@@ -24,8 +24,8 @@ const HomePage = async () => {
   });
 
   return (
-    <section className="py-8 flex flex-col gap-4">
-      <h1 className="text-3xl text-center font-bold uppercase">Todo App</h1>
+    <section className="py-8 flex flex-col gap-3">
+      <h1 className="text-3xl mb-5 text-center font-bold uppercase">Todo App</h1>
 
       <Link
         className="bg-sky-600 hover:bg-sky-700 rounded self-start px-3 py-1 flex items-center justify-center gap-1 hover:underline"
@@ -36,8 +36,7 @@ const HomePage = async () => {
       </Link>
 
       <div className="flex flex-col gap-3">
-        <h2 className="text-2xl font-semibold py-4">Tasks List</h2>
-        
+        <h2 className="text-2xl font-semibold py-3">Tasks List</h2>
         <TasksTable tasks={tasks} />
       </div>
     </section>

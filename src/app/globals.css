@@ -8,6 +8,26 @@
     --foreground: #eee;
   }
 
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  /* Define the thumb style */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-sky-500;
+    border-radius: 2px;
+  }
+  /* Define the track style */
+  ::-webkit-scrollbar-track {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+  }
+
+  /* Define the button style when being hovered over */
+  ::-webkit-scrollbar-button:hover {
+    background-color: #999999;
+  }
+
   body {
     @apply bg-[var(--background)] text-[var(--foreground)] min-h-svh;
   }

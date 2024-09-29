@@ -1,5 +1,6 @@
 import BackToTasksBtn from "@/components/shared/BackToTasksBtn";
 import DeleteBtn from "@/components/shared/DeleteBtn";
+import FixTextDir from "@/components/shared/FixTextDir";
 import EditTaskBtn from "@/components/task/EditTaskBtn";
 import TaskStatus from "@/components/task/TaskStatus";
 import dateFormat from "@/utils/dateFormat";
@@ -37,7 +38,7 @@ const SingleTaskPage = async ({ params: { id } }: TProps) => {
   const updatedAt = dateFormat(new Date(task.updatedAt));
 
   return (
-    <section className="py-8">
+    <section className="py-8 ">
       <div className="py-5 flex items-center flex-wrap gap-y-6 gap-x-8">
         <BackToTasksBtn />
 
@@ -54,32 +55,26 @@ const SingleTaskPage = async ({ params: { id } }: TProps) => {
         </div>
       </div>
 
-      <div className="flex mt-8 rounded-md shadow-md gap-3 border flex-wrap px-3 py-6 md:px-6 bg-gray-900/80 border-gray-700">
-        <div className="flex grow flex-col gap-2">
-          <div className=" " dir="auto">
-            <h2
-              dir="auto"
-              className="font-semibold w-10/12 me-auto text-2xl mb-2"
-            >
-              {task.title}
-            </h2>
-          </div>
+      <div className="flex mt-8  rounded-md shadow-md gap-3 border flex-wrap-reverse px-3 py-6 md:px-6 bg-gray-900/80 border-gray-700">
+        <div className="flex grow-[5] flex-col gap-2">
+          <h2 dir="auto" className="font-semibold  text-2xl mb-2">
+            {task.title}
+          </h2>
 
-          <small className="text-orange-500">Created at : {createdAt}</small>
+          <small className="text-orange-500 ">Created at : {createdAt}</small>
 
           {createdAt !== updatedAt && (
-            <small className="text-orange-300">Updated at : {updatedAt}</small>
+            <small className="text-orange-300 mb-2">
+              Updated at : {updatedAt}
+            </small>
           )}
 
-          <h3
-            dir="auto"
-            className="px-2 py-3 rounded border border-slate-500 bg-slate-800"
-          >
-            {task.description}
+          <h3 className="md:px-5 px-2 py-3 rounded border border-slate-500 bg-slate-800">
+            <FixTextDir text={task.description} />
           </h3>
         </div>
 
-        <div className="flex flex-col gap-2 ">
+        <div className="flex flex-col gap-2 grow items-end ">
           <TaskStatus status={task.status} />
         </div>
       </div>

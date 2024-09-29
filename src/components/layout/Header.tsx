@@ -6,10 +6,10 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import DeleteBtn from "../shared/DeleteBtn";
 import EditAccountBtn from "../user/EditAccountBtn";
+import dateFormat from "@/utils/dateFormat";
 
 import { IoHappyOutline } from "react-icons/io5";
 import { GoSignOut } from "react-icons/go";
-import dateFormat from "@/utils/dateFormat";
 
 const Header = ({ user, token }: { user: User; token: string | undefined }) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -18,7 +18,10 @@ const Header = ({ user, token }: { user: User; token: string | undefined }) => {
 
   useEffect(() => {
     const handleCloseDropDown = (e: MouseEvent) => {
-      if (e.target instanceof HTMLElement && e.target.id !== "userDropDown")
+      if (
+        e.target instanceof HTMLElement &&
+        !e.target.classList.contains("prevent_close_drop_down")
+      )
         setIsDropDownOpen(false);
     };
 
@@ -35,7 +38,7 @@ const Header = ({ user, token }: { user: User; token: string | undefined }) => {
   };
 
   return (
-    <header className="bg-gray-800 shadow-md shadow-slate-900 border-b border-slate-500 sticky top-0 py-3 sm:px-6">
+    <header className="bg-gray-800 shadow-md shadow-slate-900 border-b border-slate-500 z-50 sticky top-0 py-3 sm:px-6">
       <div className="container mx-auto flex flex-wrap items-center gap-3">
         <h2 className="flex gap-1 items-center font-semibold shrink-0">
           Welcome <IoHappyOutline className="text-xl -mb-1" />
@@ -46,7 +49,7 @@ const Header = ({ user, token }: { user: User; token: string | undefined }) => {
             onClick={() => setIsDropDownOpen((prev) => !prev)}
             id="userDropDown"
             data-dropdown-toggle="dropdown"
-            className="text-white ms-auto bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-3 py-2 text-center flex items-center min-w-content max-w-44 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800"
+            className="text-white ms-auto prevent_close_drop_down bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-3 py-2 text-center flex items-center min-w-content max-w-44 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800"
             type="button"
           >
             <span className="whitespace-nowrap pointer-events-none overflow-hidden text-ellipsis max-w-32">
@@ -70,10 +73,9 @@ const Header = ({ user, token }: { user: User; token: string | undefined }) => {
           </button>
 
           <div
-            id="dropdown"
             className={`${
               !isDropDownOpen ? "invisible opacity-0" : "opacity-100 visible"
-            } transition-all z-10 translate-y-2 absolute right-0  bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700`}
+            } transition-all  z-10 translate-y-2 absolute right-0  bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700`}
           >
             <ul
               className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -103,13 +105,17 @@ const Header = ({ user, token }: { user: User; token: string | undefined }) => {
                 </button>
               </li>
 
-              <li className="border-t px-3 py-1">
-                <small className=" text-center ">
+              <li className="border-t px-3 py-1 text-center prevent_close_drop_down">
+                <small className="prevent_close_drop_down">
                   Joined at{" "}
                   {dateFormat(new Date(user.createdAt))
                     .split(" ")
                     .slice(0, 4)
                     .join(" ")}
+                </small>
+
+                <small className="block font-semibold text-ellipsis overflow-hidden whitespace-nowrap prevent_close_drop_down">
+                  {user.email}
                 </small>
               </li>
             </ul>
