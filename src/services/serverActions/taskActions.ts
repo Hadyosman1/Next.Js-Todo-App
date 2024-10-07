@@ -1,7 +1,6 @@
 "use server";
 import prisma from "@/utils/db";
-import { Task } from "@prisma/client";
-
+import { Status, Task } from "@prisma/client";
 
 type TActionReturn =
   | { ok: true; message: string }
@@ -81,6 +80,31 @@ export async function updateTask(task: Task): Promise<TActionReturn> {
         error instanceof Error
           ? error.message
           : "Failed to update task. Please try again later.",
+    };
+  }
+}
+
+export async function updateTaskStatus(
+  id: number,
+  status: Status
+): Promise<TActionReturn> {
+  try {
+    await prisma.task.update({
+      where: { id },
+      data: { status },
+    });
+
+    return {
+      ok: true,
+      message: "Task updated successfully...",
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      error:
+        error instanceof Error
+          ? error.message
+          : "Failed to update task status. Please try again later.",
     };
   }
 }

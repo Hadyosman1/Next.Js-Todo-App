@@ -40,7 +40,7 @@
   }
 
   button:disabled {
-    @apply opacity-60 cursor-wait;
+    @apply opacity-60 cursor-no-drop;
   }
 
   input,

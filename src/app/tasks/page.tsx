@@ -38,7 +38,6 @@ const HomePage = async () => {
       </Link>
 
       <div className="flex flex-col gap-3">
-        
         <TasksTable tasks={tasks} />
       </div>
     </section>

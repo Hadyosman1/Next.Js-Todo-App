@@ -1,8 +1,12 @@
 "use client";
 
-import React, { FormEvent, useLayoutEffect, useState } from "react";
-import TaskStatus from "./TaskStatus";
-import { Task } from "@prisma/client";
+import React, {
+  FormEvent,
+  useCallback,
+  useLayoutEffect,
+  useState,
+} from "react";
+import { Status, Task } from "@prisma/client";
 import { updateTask } from "@/services/serverActions/taskActions";
 import toast from "react-hot-toast";
 import { editTaskSchema } from "@/schemas/schemas";
@@ -10,6 +14,7 @@ import { editTaskSchema } from "@/schemas/schemas";
 import { VscLoading } from "react-icons/vsc";
 import { FaPencil } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
+import EditTaskStatus from "../forms/EditTaskStatus";
 
 const EditTaskBtn = ({ task }: { task: Task }) => {
   const [formState, setFormState] = useState(task);
@@ -27,6 +32,10 @@ const EditTaskBtn = ({ task }: { task: Task }) => {
       }
     };
   }, [task, isModalOpen]);
+
+  const setStatus = useCallback((status: Status) => {
+    setFormState((prev) => ({ ...prev, status }));
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -154,61 +163,7 @@ const EditTaskBtn = ({ task }: { task: Task }) => {
                 </div>
 
                 <div className="col-span-full flex gap-2 ">
-                  <label className="relative">
-                    <input
-                      onChange={() =>
-                        setFormState((prev) => ({ ...prev, status: "TODO" }))
-                      }
-                      checked={formState.status === "TODO"}
-                      type="radio"
-                      name="status"
-                      className="appearance-none dark:focus:ring-blue-500 focus:ring-0 absolute w-full h-full"
-                    />
-                    <TaskStatus
-                      status="TODO"
-                      isActive={formState.status === "TODO"}
-                      inForm={true}
-                    />
-                  </label>
-
-                  <label className="relative">
-                    <input
-                      onChange={() =>
-                        setFormState((prev) => ({ ...prev, status: "PENDING" }))
-                      }
-                      checked={formState.status === "PENDING"}
-                      type="radio"
-                      name="status"
-                      className="appearance-none dark:focus:ring-blue-500 focus:ring-0 absolute w-full h-full"
-                    />
-
-                    <TaskStatus
-                      status="PENDING"
-                      isActive={formState.status === "PENDING"}
-                      inForm={true}
-                    />
-                  </label>
-
-                  <label className="relative">
-                    <input
-                      onChange={() =>
-                        setFormState((prev) => ({
-                          ...prev,
-                          status: "COMPLETED",
-                        }))
-                      }
-                      checked={formState.status === "COMPLETED"}
-                      type="radio"
-                      name="status"
-                      className="appearance-none dark:focus:ring-blue-500 focus:ring-0 absolute w-full h-full"
-                    />
-
-                    <TaskStatus
-                      status="COMPLETED"
-                      isActive={formState.status === "COMPLETED"}
-                      inForm={true}
-                    />
-                  </label>
+                  <EditTaskStatus status={formState.status} setStatus={setStatus} />
                 </div>
               </div>
 

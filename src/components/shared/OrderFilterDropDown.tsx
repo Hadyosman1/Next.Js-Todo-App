@@ -12,7 +12,7 @@ const OrderFilterDropDown = ({ filter, setFilter }: IProps) => {
   const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
 
   return (
-    <div className="relative">
+    <div className="relative flex-shrink-0">
       <button
         onClick={() => setIsSortMenuOpen((prev) => !prev)}
         type="button"

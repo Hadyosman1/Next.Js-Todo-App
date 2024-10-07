@@ -1,18 +1,18 @@
 const Footer = () => {
   return (
-    <footer className="mt-auto border-t">
-      <div className="sm:flex sm:items-center sm:justify-between container mx-auto py-6">
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+    <footer className="mt-auto border-t ">
+      <div className="container mx-auto flex flex-wrap items-center justify-center gap-3 py-[16px] md:justify-between">
+        <span className="grow text-center text-sm text-white md:text-start dark:text-white">
           © 2024 <span>Hady Osman</span>. All Rights Reserved.
         </span>
-        <div className="flex mt-4 sm:justify-center sm:mt-0">
+        <div className="flex grow justify-center md:justify-end">
           <a
             target="_blank"
             href="https://www.facebook.com/haadii.osman"
-            className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+            className="text-white hover:text-white dark:hover:text-white"
           >
             <svg
-              className="w-4 h-4"
+              className="h-4 w-4"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -30,10 +30,10 @@ const Footer = () => {
           <a
             target="_blank"
             href="https://github.com/Hadyosman1"
-            className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+            className="ms-5 text-white hover:text-white dark:hover:text-white"
           >
             <svg
-              className="w-4 h-4"
+              className="h-4 w-4"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -51,10 +51,10 @@ const Footer = () => {
           <a
             target="_blank"
             href="https://www.linkedin.com/in/hady-osman/"
-            className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+            className="ms-5 text-white hover:text-white dark:hover:text-white"
           >
             <svg
-              className="w-4 h-4 text-gray-500 hover:text-gray-900 dark:hover:text-white "
+              className="h-4 w-4 text-white hover:text-white dark:hover:text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -67,7 +67,6 @@ const Footer = () => {
               />
               <path d="M7.2 8.809H4V19.5h3.2V8.809Z" />
             </svg>
-
             <span className="sr-only">Linkedin account</span>
           </a>
         </div>

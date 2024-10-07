@@ -30,7 +30,7 @@ const TaskStatus = ({ status, inForm, isActive }: TProps) => {
 
   return (
     <span
-      className={`text-sm lowercase text-white font-medium transition-all inline-flex items-center ${
+      className={`text-sm lowercase w-full text-white font-medium transition-all inline-flex items-center ${
         inForm && "cursor-pointer hover:translate-y-0.5 hover:scale-95"
       } px-2.5 py-1 rounded-lg ${isActiveClass} ${bg}`}
     >

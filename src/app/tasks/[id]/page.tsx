@@ -75,7 +75,9 @@ const SingleTaskPage = async ({ params: { id } }: TProps) => {
         </div>
 
         <div className="flex flex-col gap-2 grow items-end ">
-          <TaskStatus status={task.status} />
+          <span>
+            <TaskStatus status={task.status} />
+          </span>
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@
 import BackToTasksBtn from "../components/shared/BackToTasksBtn";
 
 const Error = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   error,
   reset,
 }: {
@@ -14,11 +15,11 @@ const Error = ({
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div className="mx-auto max-w-screen-sm text-center">
           <h1 className="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-sky-600 dark:text-sky-500">
-            400
+            500
           </h1>
 
           <p className="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl break-all dark:text-white">
-            {error.message || "Internal Server Error."}
+            Something Went Wrong.
           </p>
 
           <div className="flex gap-3 items-center justify-center">

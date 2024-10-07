@@ -21,7 +21,7 @@ const StatusFilterDropDown = ({ filter, setFilter }: IProps) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative flex-shrink-0">
       <button
         onClick={() => setIsStatusFilterMenuOpen((prev) => !prev)}
         type="button"
